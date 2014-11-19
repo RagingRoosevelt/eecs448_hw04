@@ -4,7 +4,7 @@ def cController:
         view = cView()
     
     def DisplayBook(genre):
-        return model.GetGookList(genre)
+        return model.GetBookList(genre)
         
     def AddToOrder(BookID):
         model.AddToOrder(BookID)

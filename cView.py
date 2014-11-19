@@ -1,6 +1,6 @@
 class cView:
-    #def __init__(self):
-        
+    def __init__(self):
+        controller = cController()
         
 
     #--Display Books--
@@ -10,17 +10,14 @@ class cView:
         print("2.    Travel")
         print("3.    Software Engineering")
         uchoice = input("Please input the number of your choice: ")
-        #print(DisplayBooks(uchoice))
-        #^ should print the booklist to the screen (somehow)
-        
-        print(uchoice)
+        controller.DisplayBook(uchoice)
         self.main()
         
     #--Add Book to Order--
     def AddToOrder(self):
         uchoice = input("Please input BookID: ")
         if (1 <= int(uchoice) <= 60):
-            #AddToOrder(int(uchoice))
+            controller.AddToOrder(int(uchoice))
             print("Added " + uchoice + " to order.")
             self.main()
         else:
@@ -33,7 +30,7 @@ class cView:
     def RemoveFromOrder(self):
         uchoice = input("Please input BookID: ")
         if (1 <= int(uchoice) <= 60):
-            #RemoveFromOrder(int(uchoice))
+            controller.RemoveFromOrder(int(uchoice))
             print ("Removed " + uchoice + " from order.")
             self.main()
         else:
@@ -42,8 +39,7 @@ class cView:
             
     #--Calculate Cost of Order--
     def DisplayOrderCost(self):
-        #GetOrderCost()
-        print("calc cost")
+        controller.GetOrderCost()
         self.main()
 
     #Main thing
