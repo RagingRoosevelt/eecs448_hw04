@@ -22,7 +22,7 @@ class View:
         if (1 <= int(uchoice) <= 60):
             return "a" + str(uchoice)
         else:
-            print("Invalid BookID.")
+            print("Invalid BookID, please try again.")
             return self.AddToOrder()
 
         #^ this will pass bookid to other thing
@@ -33,7 +33,7 @@ class View:
         if (1 <= int(uchoice) <= 60):
             return "r" + str(uchoice)
         else:
-            print("Invalid BookID.")
+            print("Invalid BookID, please try again.")
             return self.RemoveFromOrder()
         
     def GeneralDisplay(self, array):
@@ -43,6 +43,7 @@ class View:
     #--menu--
     def menu(self):
         print()
+        print ("================================================")
         print ("Avalible actions:")
         print ("1.    Display Books")
         print ("2.    Display Current Order")
@@ -65,4 +66,5 @@ class View:
         elif uchoice == '6':
             return "quit"
         else:
-            print("Invalid input.")
+            print("Invalid input, please try again.")
+            return "invalid"
