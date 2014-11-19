@@ -1,4 +1,7 @@
 def cController:
+    def __init__(self):
+        model = cModel()
+        view = cView()
     
     def DisplayBook(genre):
         return model.GetGookList(genre)
