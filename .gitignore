@@ -1,3 +1,10 @@
 #Linux backup files
 *~
 *.autosave
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz
+*.toc
+*.pyc

@@ -1,13 +1,11 @@
 #! /usr/bin/python
 class Model:
     def __init__(self):
-        self.CurrentOrder = [1,2,21];
-        self.Stock = [];
+        self.CurrentOrder = [];
         self.cost = 0;
 
         self.titles = [0] * 61
         self.authors = [0] * 61
-        #self.genres = [0] * 61
         
         # Science Fiction titles, $50
         self.titles[1] = 'Dune [S1]'
@@ -167,10 +165,10 @@ class Model:
         self.CurrentOrder.sort()
 
     def RemoveFromOrder(self, BookID):
-        self.CurrentOrder.remove(BookID)
-
-    def ListOrder(self):
-        return self.CurrentOrder
+        try:
+            self.CurrentOrder.remove(BookID)
+        except:
+            print("Book ID " + str(BookID) + " not in current order")
 
     def CalculateOrderCost(self):
         self.cost = 0

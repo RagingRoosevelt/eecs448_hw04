@@ -7,7 +7,7 @@ class Controller:
         view = View()
         
         while True:
-            action = view.main()
+            action = view.menu()
             
             if action == "quit":
                 quit()
