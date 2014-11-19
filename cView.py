@@ -1,10 +1,4 @@
 class View:
-    def __init__(self):
-        from cController import Controller
-		  
-		  controller = Controller()
-        
-
     #--Display Books--
     def DisplayBooks(self):
         print("Select genre:")
@@ -21,18 +15,15 @@ class View:
             return "dTravel"
         elif uchoice == "3":
             return "dSoftware"
-        controller.DisplayBooks(uchoice)
+        
     #--Add Book to Order--
     def AddToOrder(self):
         uchoice = input("Please input BookID: ")
         if (1 <= int(uchoice) <= 60):
-            controller.AddToOrder(int(uchoice))
-            print("Added BookID " + uchoice + " to order.")
-            print()
             return "a" + str(uchoice)
         else:
             print("Invalid BookID.")
-            return AddToOrder()
+            return self.AddToOrder()
 
         #^ this will pass bookid to other thing
 
@@ -40,25 +31,17 @@ class View:
     def RemoveFromOrder(self):
         uchoice = input("Please input BookID: ")
         if (1 <= int(uchoice) <= 60):
-            controller.RemoveFromOrder(int(uchoice))
-            print ("Removed BookID " + uchoice + " from order.")
-            print()
             return "r" + str(uchoice)
         else:
             print("Invalid BookID.")
             return self.RemoveFromOrder()
-            
-    #--Calculate Cost of Order--
-    def DisplayOrderCost(self):
-        controller.GetOrderCost()
-        print("calc cost")
         
-    def GeneralDisplay(self, list):
-        for entry in list:
+    def GeneralDisplay(self, array):
+        for entry in array:
             print(entry)
 
-    #Main thing
-    def main(self):
+    #--menu--
+    def menu(self):
         print()
         print ("Avalible actions:")
         print ("1.    Display Books")
@@ -83,4 +66,3 @@ class View:
             return "quit"
         else:
             print("Invalid input.")
-            self.main()
