@@ -1,4 +1,4 @@
-class cView:
+class View:
     #def __init__(self):
         
         
@@ -10,22 +10,29 @@ class cView:
         print("2.    Travel")
         print("3.    Software Engineering")
         uchoice = input("Please input the number of your choice: ")
+        print(uchoice)
+        print()
+        
+        if uchoice == "1":
+            return "dSciFi"
+        elif uchoice == "2":
+            return "dTravel"
+        elif uchoice == "3":
+            return "dSoftware"
         #print(DisplayBooks(uchoice))
         #^ should print the booklist to the screen (somehow)
-        
-        print(uchoice)
-        self.main()
         
     #--Add Book to Order--
     def AddToOrder(self):
         uchoice = input("Please input BookID: ")
         if (1 <= int(uchoice) <= 60):
             #AddToOrder(int(uchoice))
-            print("Added " + uchoice + " to order.")
-            self.main()
+            print("Added BookID " + uchoice + " to order.")
+            print()
+            return "a" + str(uchoice)
         else:
             print("Invalid BookID.")
-            AddToOrder()
+            return AddToOrder()
 
         #^ this will pass bookid to other thing
 
@@ -34,41 +41,46 @@ class cView:
         uchoice = input("Please input BookID: ")
         if (1 <= int(uchoice) <= 60):
             #RemoveFromOrder(int(uchoice))
-            print ("Removed " + uchoice + " from order.")
-            self.main()
+            print ("Removed BookID " + uchoice + " from order.")
+            print()
+            return "r" + str(uchoice)
         else:
             print("Invalid BookID.")
-            RemoveFromOrder()
+            return self.RemoveFromOrder()
             
     #--Calculate Cost of Order--
     def DisplayOrderCost(self):
         #GetOrderCost()
         print("calc cost")
-        self.main()
+        
+    def GeneralDisplay(self, list):
+        for entry in list:
+            print(entry)
 
     #Main thing
     def main(self):
+        print()
+        print ("Avalible actions:")
         print ("1.    Display Books")
-        print ("2.    Add Book to Order")
-        print ("3.    Remove Book from Order")
-        print ("4.    Calculate Order Cost")
-        print ("5.    Quit")
+        print ("2.    Display Current Order")
+        print ("3.    Add Book to Order")
+        print ("4.    Remove Book from Order")
+        print ("5.    Calculate Order Cost")
+        print ("6.    Quit")
         uchoice = input("Please input the number of your choice: ")
         print("")
         if uchoice == '1':
-            self.DisplayBooks()
+            return self.DisplayBooks()
         elif uchoice == '2':
-            self.AddToOrder()
+            return "order"
         elif uchoice == '3':
-            self.RemoveFromOrder()
+            return self.AddToOrder()
         elif uchoice == '4':
-            self.DisplayOrderCost()
+            return self.RemoveFromOrder()
         elif uchoice == '5':
-            quit
+            return "cost"#self.DisplayOrderCost()
+        elif uchoice == '6':
+            return "quit"
         else:
             print("Invalid input.")
             self.main()
-        
-        
-view = cView()
-view.main()

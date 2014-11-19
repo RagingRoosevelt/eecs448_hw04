@@ -1,1 +1,3 @@
-class Model:
+from cController import Controller
+
+Controller()

@@ -1,5 +1,5 @@
 #! /usr/bin/python
-class cModel:
+class Model:
     def __init__(self):
         self.CurrentOrder = [1,2,21];
         self.Stock = [];
@@ -9,7 +9,7 @@ class cModel:
         self.authors = [0] * 61
         #self.genres = [0] * 61
         
-        # Science Fiction Books, $50
+        # Science Fiction titles, $50
         self.titles[1] = 'Dune [S1]'
         self.titles[2] = 'Ender\'s Game [S1]'
         self.titles[3] = 'The Foundation Trilogy'
@@ -31,7 +31,7 @@ class cModel:
         self.titles[19] = 'Childhood\'s End'
         self.titles[20] = 'The Moon is a Harsh Mistress'
 
-        # Travel Books, $40
+        # Travel titles, $40
         self.titles[21] = 'A Dragon Apparent'
         self.titles[22] = 'A House in Bali'
         self.titles[23] = 'A Moveable Feast'
@@ -53,7 +53,7 @@ class cModel:
         self.titles[39] = 'Bitter Lemons of Cyprus'
         self.titles[40] = 'Black Lamb and Grey Falcon'
 
-        # Software Engineering Books, $100
+        # Software Engineering titles, $100
         self.titles[41] = 'Code Complete: A Handbook of Software Construction'
         self.titles[42] = 'Head First Design Patterns'
         self.titles[43] = 'Rapid Development' 
@@ -75,7 +75,7 @@ class cModel:
         self.titles[59] = 'The Pragmatic Programmer'
         self.titles[60] = 'Software Requirements'
 
-        # Science Fiction Books, $50
+        # Science Fiction titles, $50
         self.authors[1] = 'Frank Herbert'
         self.authors[2] = 'Orson Scott Card'
         self.authors[3] = 'Isaac Asimov'
@@ -97,7 +97,7 @@ class cModel:
         self.authors[19] = 'Arthur C Clarke'
         self.authors[20] = 'Robert A Heinlein'
 
-        # Travel Books, $40
+        # Travel titles, $40
         self.authors[21] = 'Norman Lewis'
         self.authors[22] = 'Colin McPhee'
         self.authors[23] = 'Ernest Hemingway'
@@ -119,7 +119,7 @@ class cModel:
         self.authors[39] = 'Lawrence Durrell'
         self.authors[40] = 'Rebecca West'
 
-        # Software Engineering Books, $100
+        # Software Engineering titles, $100
         self.authors[41] = 'Steve McConnell'
         self.authors[42] = 'Elisabeth Freeman'
         self.authors[43] = 'Steve McConnell'
@@ -140,9 +140,31 @@ class cModel:
         self.authors[58] = 'Jeffrey Friedl'
         self.authors[59] = 'Andrew Hunt'
         self.authors[60] = 'Karl E. Wiegers'
+        
+    def GetBookList(self, genre):
+        BookList = ["ID\tAuthor\t\t\t\tTitle"]
+        if genre == "SciFi":
+            for BookID in range(1,20+1):
+                BookList.append(str(BookID) + "\t" + self.authors[BookID] + "\t\t\t" + self.titles[BookID])
+        elif genre == "Travel":
+            for BookID in range(21,40+1):
+                BookList.append(str(BookID) + "\t" + self.authors[BookID] + "\t\t\t" + self.titles[BookID])
+        elif genre == "Software":
+            for BookID in range(41,60+1):
+                BookList.append(str(BookID) + "\t" + self.authors[BookID] + "\t\t\t" + self.titles[BookID])
+        return BookList
+        
+    def GetOrder(self):
+        OrderList = ["Current order contents:"]
+        OrderList.append("ID\tAuthor\t\t\t\tTitle")
+        for BookID in self.CurrentOrder:
+            OrderList.append(str(BookID) + "\t" + self.authors[BookID] + "\t\t\t" + self.titles[BookID])
+        return OrderList
+            
 
     def AddToOrder(self, BookID):
         self.CurrentOrder.append(BookID)
+        self.CurrentOrder.sort()
 
     def RemoveFromOrder(self, BookID):
         self.CurrentOrder.remove(BookID)
@@ -151,19 +173,17 @@ class cModel:
         return self.CurrentOrder
 
     def CalculateOrderCost(self):
+        self.cost = 0
         for i in self.CurrentOrder:
             
-            print("Cost:   " + str(self.cost))
-            print("BookID: " + str(i))
-            print()
+            #print("Cost:   " + str(self.cost))
+            #print("BookID: " + str(i))
+            #print()
             if i < 21:
                 self.cost += 50
             elif i < 41:
                 self.cost += 40
             else:
                 self.cost += 100
-        return self.cost
+        return ["Order cost is $" + str(self.cost)]
 
-
-model = cModel()
-print(str(model.CalculateOrderCost()))
