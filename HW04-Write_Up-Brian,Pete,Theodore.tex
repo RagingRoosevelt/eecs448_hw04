@@ -2,11 +2,15 @@
 
 \usepackage[top=1.0in, bottom=1.0in, left=1.0in, right=1.0in]{geometry}
 
+\usepackage{graphicx}
+
 \usepackage{indentfirst}
 \usepackage{listings}
 \lstset{breaklines=true}
 
 \usepackage{pdfpages}
+
+\usepackage{lscape}
 
 
 \author{Brian Kennedy \\ Pete Koehn \\ Theodore Lindsey}
@@ -45,7 +49,17 @@
 \hrule
 \vspace{1cm}
 
+\begin{figure}
+\caption{Sequence Diagram}
+\includegraphics[height=\textheight]{dSequenceDiagram.png}
+\end{figure}
 
+\begin{landscape}
+\begin{figure}
+\caption{Class Diagram}
+\includegraphics[width=1.3\textheight]{dClassDiagram.png}
+\end{figure}
+\end{landscape}
 
 
 \end{document}
