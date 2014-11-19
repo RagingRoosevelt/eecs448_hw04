@@ -1,162 +1,167 @@
 #! /usr/bin/python
+class cModel:
+    def __init__(self):
+        self.CurrentOrder = [1];
+        self.Stock = [];
+        self.cost = 0;
 
-CurrentOrder = [];
-Stock = [];
-cost = 0;
+        self.titles = [0] * 61
+        self.authors = [0] * 61
+        #self.genres = [0] * 61
+        
+        # Science Fiction Books, $50
+        self.titles[1] = 'Dune [S1]'
+        self.titles[2] = 'Ender\'s Game [S1]'
+        self.titles[3] = 'The Foundation Trilogy'
+        self.titles[4] = 'Hitch Hiker\'s Guide to the Galaxy [S1]'
+        self.titles[5] = '1984'
+        self.titles[6] = 'Stranger in a Strange Land'
+        self.titles[7] = 'Fahrenheit 451'
+        self.titles[8] = '2001: A Space Odyssey'
+        self.titles[9] = 'Do Androids Dream of Electric Sheep?'
+        self.titles[10] = 'Neuromancer [S1]'
+        self.titles[11] = '[C] I, Robot'
+        self.titles[12] = 'Starship Troopers'
+        self.titles[13] = 'Ringworld [S1]'
+        self.titles[14] = 'Rendezvous With Rama'
+        self.titles[15] = 'Hyperion [S1]'
+        self.titles[16] = 'Brave New World' 
+        self.titles[17] = 'The Forever War'
+        self.titles[18] = 'The Time Machine'
+        self.titles[19] = 'Childhood\'s End'
+        self.titles[20] = 'The Moon is a Harsh Mistress'
 
-titles = [0] * 61
-authors = [0] * 61
-genres = [0] * 61
+        # Travel Books, $40
+        self.titles[21] = 'A Dragon Apparent'
+        self.titles[22] = 'A House in Bali'
+        self.titles[23] = 'A Moveable Feast'
+        self.titles[24] = 'A Short Walk in the Hindu Kush'
+        self.titles[25] = 'A Time of Gifts' 
+        self.titles[26] = 'A Turn in the South'
+        self.titles[27] = 'A Walk in the Woods'
+        self.titles[28] = 'A Winter in Arabia'
+        self.titles[29] = 'Among the Russians'
+        self.titles[30] = 'An Area of Darkness'
+        self.titles[31] = 'Arabian Sands'
+        self.titles[32] = 'Arctic Dreams'
+        self.titles[33] = 'The Art of Travel'
+        self.titles[34] = 'As I Walked Out One Midsummer Morning' 
+        self.titles[35] = 'Baghdad Without a Map'
+        self.titles[36] = 'Balkan Ghosts'
+        self.titles[37] = 'Beyond Euphrates'
+        self.titles[38] = 'The Bird Man and the Lap Dancer'
+        self.titles[39] = 'Bitter Lemons of Cyprus'
+        self.titles[40] = 'Black Lamb and Grey Falcon'
 
-def AddToOrder(BookID):
-    CurrentOrder.append(titles[BookID])
+        # Software Engineering Books, $100
+        self.titles[41] = 'Code Complete: A Handbook of Software Construction'
+        self.titles[42] = 'Head First Design Patterns'
+        self.titles[43] = 'Rapid Development' 
+        self.titles[44] = 'Design Patterns: Elements of Reusable Object-Oriented Software'
+        self.titles[45] = 'Cryptography: Protocols, Algorithms, and Source Code'
+        self.titles[46] = 'Agile Software Development: Principles, Patterns and Practices'
+        self.titles[47] = 'Joel on Software'
+        self.titles[48] = 'Peopleware: Productive Projects and Teams'
+        self.titles[49] = 'The Mythical Man-Month, Anniversary Edition'
+        self.titles[50] = 'Refactoring: Improving the Design of Existing Code'
+        self.titles[51] = 'Agile Estimating and Planning'
+        self.titles[52] = 'Writing Effective Use Cases' 
+        self.titles[53] = 'Object-Oriented Software Construction'
+        self.titles[54] = 'Software Estimation: Demystifying the Black Art'
+        self.titles[55] = 'User Stories Applied: For Agile Software Development'
+        self.titles[56] = 'The Art of Computer Programming'
+        self.titles[57] = 'Patterns of Enterprise Application Architecture' 
+        self.titles[58] = 'Mastering Regular Expressions'
+        self.titles[59] = 'The Pragmatic Programmer'
+        self.titles[60] = 'Software Requirements'
 
-def RemoveFromOrder(BookID):
-    CurrentOrder.remove(titles[BookID])
+        # Science Fiction Books, $50
+        self.authors[1] = 'Frank Herbert'
+        self.authors[2] = 'Orson Scott Card'
+        self.authors[3] = 'Isaac Asimov'
+        self.authors[4] = 'Douglas Adams'
+        self.authors[5] = 'George Orwell'
+        self.authors[6] = 'Robert A Heinlein'
+        self.authors[7] = 'Ray Bradbury'
+        self.authors[8] = 'Arthur C Clarke'
+        self.authors[9] = 'Philip K Dick'
+        self.authors[10] = 'William Gibson'
+        self.authors[11] = 'Isaac Asimov'
+        self.authors[12] = 'Robert A Heinlein'
+        self.authors[13] = 'Larry Niven'
+        self.authors[14] = 'Arthur C Clarke'
+        self.authors[15] = 'Dan Simmons'
+        self.authors[16] = 'Aldous Huxley'
+        self.authors[17] = 'Joe Haldeman'
+        self.authors[18] = 'H G Wells'
+        self.authors[19] = 'Arthur C Clarke'
+        self.authors[20] = 'Robert A Heinlein'
 
-def ListOrder():
-    return CurrentOrder
+        # Travel Books, $40
+        self.authors[21] = 'Norman Lewis'
+        self.authors[22] = 'Colin McPhee'
+        self.authors[23] = 'Ernest Hemingway'
+        self.authors[24] = 'Eric Newby'
+        self.authors[25] = 'Patrick Leigh Fermor'
+        self.authors[26] = 'V.S. Naipaul'
+        self.authors[27] = 'Bill Bryson'
+        self.authors[28] = 'Freya Stark'
+        self.authors[29] = 'Colin Thubron'
+        self.authors[30] = 'V.S. Naipaul'
+        self.authors[31] = 'Wilfred Thesiger'
+        self.authors[32] = 'Barry Lopez'
+        self.authors[33] = 'Alain de Botton'
+        self.authors[34] = 'Laurie Lee'
+        self.authors[35] = 'Tony Horwitz'
+        self.authors[36] = 'Robert D. Kaplan'
+        self.authors[37] = 'Freya Stark'
+        self.authors[38] = 'Eric Hansen'
+        self.authors[39] = 'Lawrence Durrell'
+        self.authors[40] = 'Rebecca West'
 
-def CalculateOrderCost():
-    for i in CurrentOrder:
-        for j in titles:
-            if CurrentOrder[i] == titles[j]:
-                if j < 21:
-                    cost += 50
-                if j < 41:
-                    cost += 40
-                else:
-                    cost += 100
+        # Software Engineering Books, $100
+        self.authors[41] = 'Steve McConnell'
+        self.authors[42] = 'Elisabeth Freeman'
+        self.authors[43] = 'Steve McConnell'
+        self.authors[44] = 'Erich Gamma'
+        self.authors[45] = 'Bruce Schneier'
+        self.authors[46] = 'Robert C. Martin'
+        self.authors[47] = 'Joel Spolsky'
+        self.authors[48] = 'Tom DeMarco'
+        self.authors[49] = 'Frederick P. Brooks'
+        self.authors[50] = 'Martin Fowler'
+        self.authors[51] = 'Mike Cohn'
+        self.authors[52] = 'Alistair Cockburn'
+        self.authors[53] = 'Bertrand Meyer'
+        self.authors[54] = 'Steve McConnell'
+        self.authors[55] = 'Mike Cohn'
+        self.authors[56] = 'Donald E. Knuth'
+        self.authors[57] = 'Martin Fowler'
+        self.authors[58] = 'Jeffrey Friedl'
+        self.authors[59] = 'Andrew Hunt'
+        self.authors[60] = 'Karl E. Wiegers'
 
-# Science Fiction Books, $50
-titles[1] = 'Dune [S1]'
-titles[2] = 'Ender\'s Game [S1]'
-titles[3] = 'The Foundation Trilogy'
-titles[4] = 'Hitch Hiker\'s Guide to the Galaxy [S1]'
-titles[5] = '1984'
-titles[6] = 'Stranger in a Strange Land'
-titles[7] = 'Fahrenheit 451'
-titles[8] = '2001: A Space Odyssey'
-titles[9] = 'Do Androids Dream of Electric Sheep?'
-titles[10] = 'Neuromancer [S1]'
-titles[11] = '[C] I, Robot'
-titles[12] = 'Starship Troopers'
-titles[13] = 'Ringworld [S1]'
-titles[14] = 'Rendezvous With Rama'
-titles[15] = 'Hyperion [S1]'
-titles[16] = 'Brave New World' 
-titles[17] = 'The Forever War'
-titles[18] = 'The Time Machine'
-titles[19] = 'Childhood\'s End'
-titles[20] = 'The Moon is a Harsh Mistress'
+    def AddToOrder(self, BookID):
+        self.CurrentOrder.append(self.titles[BookID])
 
-# Travel Books, $40
-titles[21] = 'A Dragon Apparent'
-titles[22] = 'A House in Bali'
-titles[23] = 'A Moveable Feast'
-titles[24] = 'A Short Walk in the Hindu Kush'
-titles[25] = 'A Time of Gifts' 
-titles[26] = 'A Turn in the South'
-titles[27] = 'A Walk in the Woods'
-titles[28] = 'A Winter in Arabia'
-titles[29] = 'Among the Russians'
-titles[30] = 'An Area of Darkness'
-titles[31] = 'Arabian Sands'
-titles[32] = 'Arctic Dreams'
-titles[33] = 'The Art of Travel'
-titles[34] = 'As I Walked Out One Midsummer Morning' 
-titles[35] = 'Baghdad Without a Map'
-titles[36] = 'Balkan Ghosts'
-titles[37] = 'Beyond Euphrates'
-titles[38] = 'The Bird Man and the Lap Dancer'
-titles[39] = 'Bitter Lemons of Cyprus'
-titles[40] = 'Black Lamb and Grey Falcon'
+    def RemoveFromOrder(self, BookID):
+        self.CurrentOrder.remove(self.titles[BookID])
 
-# Software Engineering Books, $100
-titles[41] = 'Code Complete: A Handbook of Software Construction'
-titles[42] = 'Head First Design Patterns'
-titles[43] = 'Rapid Development' 
-titles[44] = 'Design Patterns: Elements of Reusable Object-Oriented Software'
-titles[45] = 'Cryptography: Protocols, Algorithms, and Source Code'
-titles[46] = 'Agile Software Development: Principles, Patterns and Practices'
-titles[47] = 'Joel on Software'
-titles[48] = 'Peopleware: Productive Projects and Teams'
-titles[49] = 'The Mythical Man-Month, Anniversary Edition'
-titles[50] = 'Refactoring: Improving the Design of Existing Code'
-titles[51] = 'Agile Estimating and Planning'
-titles[52] = 'Writing Effective Use Cases' 
-titles[53] = 'Object-Oriented Software Construction'
-titles[54] = 'Software Estimation: Demystifying the Black Art'
-titles[55] = 'User Stories Applied: For Agile Software Development'
-titles[56] = 'The Art of Computer Programming'
-titles[57] = 'Patterns of Enterprise Application Architecture' 
-titles[58] = 'Mastering Regular Expressions'
-titles[59] = 'The Pragmatic Programmer'
-titles[60] = 'Software Requirements'
+    def ListOrder(self):
+        return self.CurrentOrder
 
-# Science Fiction Books, $50
-authors[1] = 'Frank Herbert'
-authors[2] = 'Orson Scott Card'
-authors[3] = 'Isaac Asimov'
-authors[4] = 'Douglas Adams'
-authors[5] = 'George Orwell'
-authors[6] = 'Robert A Heinlein'
-authors[7] = 'Ray Bradbury'
-authors[8] = 'Arthur C Clarke'
-authors[9] = 'Philip K Dick'
-authors[10] = 'William Gibson'
-authors[11] = 'Isaac Asimov'
-authors[12] = 'Robert A Heinlein'
-authors[13] = 'Larry Niven'
-authors[14] = 'Arthur C Clarke'
-authors[15] = 'Dan Simmons'
-authors[16] = 'Aldous Huxley'
-authors[17] = 'Joe Haldeman'
-authors[18] = 'H G Wells'
-authors[19] = 'Arthur C Clarke'
-authors[20] = 'Robert A Heinlein'
+    def CalculateOrderCost(self):
+        for i in self.CurrentOrder:
+            
+            print(i)
+            if i < 21:
+                self.cost += 50
+            if i < 41:
+                self.cost += 40
+            else:
+                self.cost += 100
+        return self.cost
 
-# Travel Books, $40
-authors[21] = 'Norman Lewis'
-authors[22] = 'Colin McPhee'
-authors[23] = 'Ernest Hemingway'
-authors[24] = 'Eric Newby'
-authors[25] = 'Patrick Leigh Fermor'
-authors[26] = 'V.S. Naipaul'
-authors[27] = 'Bill Bryson'
-authors[28] = 'Freya Stark'
-authors[29] = 'Colin Thubron'
-authors[30] = 'V.S. Naipaul'
-authors[31] = 'Wilfred Thesiger'
-authors[32] = 'Barry Lopez'
-authors[33] = 'Alain de Botton'
-authors[34] = 'Laurie Lee'
-authors[35] = 'Tony Horwitz'
-authors[36] = 'Robert D. Kaplan'
-authors[37] = 'Freya Stark'
-authors[38] = 'Eric Hansen'
-authors[39] = 'Lawrence Durrell'
-authors[40] = 'Rebecca West'
 
-# Software Engineering Books, $100
-authors[41] = 'Steve McConnell'
-authors[42] = 'Elisabeth Freeman'
-authors[43] = 'Steve McConnell'
-authors[44] = 'Erich Gamma'
-authors[45] = 'Bruce Schneier'
-authors[46] = 'Robert C. Martin'
-authors[47] = 'Joel Spolsky'
-authors[48] = 'Tom DeMarco'
-authors[49] = 'Frederick P. Brooks'
-authors[50] = 'Martin Fowler'
-authors[51] = 'Mike Cohn'
-authors[52] = 'Alistair Cockburn'
-authors[53] = 'Bertrand Meyer'
-authors[54] = 'Steve McConnell'
-authors[55] = 'Mike Cohn'
-authors[56] = 'Donald E. Knuth'
-authors[57] = 'Martin Fowler'
-authors[58] = 'Jeffrey Friedl'
-authors[59] = 'Andrew Hunt'
-authors[60] = 'Karl E. Wiegers'
-
+model = cModel()
+print(str(model.CalculateOrderCost()))
