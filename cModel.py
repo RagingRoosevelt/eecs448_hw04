@@ -1,7 +1,7 @@
 #! /usr/bin/python
 class cModel:
     def __init__(self):
-        self.CurrentOrder = [1,2];
+        self.CurrentOrder = [1,2,21];
         self.Stock = [];
         self.cost = 0;
 
@@ -158,7 +158,7 @@ class cModel:
             print()
             if i < 21:
                 self.cost += 50
-            if i < 41:
+            elif i < 41:
                 self.cost += 40
             else:
                 self.cost += 100
