@@ -1,7 +1,7 @@
 #! /usr/bin/python
 class cModel:
     def __init__(self):
-        self.CurrentOrder = [1];
+        self.CurrentOrder = [1,2];
         self.Stock = [];
         self.cost = 0;
 
@@ -142,10 +142,10 @@ class cModel:
         self.authors[60] = 'Karl E. Wiegers'
 
     def AddToOrder(self, BookID):
-        self.CurrentOrder.append(self.titles[BookID])
+        self.CurrentOrder.append(BookID)
 
     def RemoveFromOrder(self, BookID):
-        self.CurrentOrder.remove(self.titles[BookID])
+        self.CurrentOrder.remove(BookID)
 
     def ListOrder(self):
         return self.CurrentOrder
@@ -153,7 +153,9 @@ class cModel:
     def CalculateOrderCost(self):
         for i in self.CurrentOrder:
             
-            print(i)
+            print("Cost:   " + str(self.cost))
+            print("BookID: " + str(i))
+            print()
             if i < 21:
                 self.cost += 50
             if i < 41:
