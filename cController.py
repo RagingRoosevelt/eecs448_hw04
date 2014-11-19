@@ -23,9 +23,14 @@ class Controller:
                 self.GetOrderCost(model,view)
                 
     
+<<<<<<< HEAD
     def DisplayBook(self, model, view, genre):
         BookList = model.GetBookList(genre)
         view.GeneralDisplay(BookList)
+=======
+    def DisplayBook(genre):
+        return model.GetBookList(genre)
+>>>>>>> origin/master
         
     def AddToOrder(self, model, BookID):
         model.AddToOrder(BookID)
